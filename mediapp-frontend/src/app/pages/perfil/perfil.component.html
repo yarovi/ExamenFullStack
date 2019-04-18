@@ -1,0 +1,28 @@
+<div >
+    <!-- <mat-form-field>
+        <input matInput  [(ngModel)]="perfil.nombre">
+      </mat-form-field> -->
+    <!-- <mat-form-field>
+      <input matInput  [(ngModel)]="perfil.descripcion">
+    </mat-form-field> -->
+    <!-- <div  ng-repeat="(key,item) in perfil.descripcion">
+      <a ng-repeat="i in item">
+        {{i.descripcion}}
+      </a>
+   </div> -->
+
+   <h1 mat-dialog-title>Info.</h1>
+   <div mat-dialog-content>
+    <h2 class="md-display-4">{{perfil.nombre}}</h2>
+    <mat-list>
+
+      <mat-list-item *ngFor="let r of perfil.descripcion">
+          {{r}}
+      </mat-list-item>
+    </mat-list>
+    <!-- <li  *ngFor="let r of perfil.descripcion">
+       <span>{{r}}</span>
+    </li> -->
+   </div>
+  </div>
+  <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>

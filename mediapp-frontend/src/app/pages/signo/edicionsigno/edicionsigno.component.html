@@ -1,0 +1,79 @@
+<mat-toolbar>Registro de Signos 2019</mat-toolbar>
+<form class="example-container" [formGroup]="form" (ngSubmit)="operar()" >
+
+  <!--  -->
+  <mat-grid-list cols="5" rowHeight="5:1">
+      <mat-grid-tile >1</mat-grid-tile>
+      <mat-grid-tile colspan="2" rowspan="1">
+          <div class="example-container">
+          <mat-form-field>
+              <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [formControl]="myControlPaciente"
+                formControlName="paciente">
+              <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="displayFn" (optionSelected)="seleccionarPaciente($event)">
+                <mat-option *ngFor="let p of filteredOptions | async" [value]="p">
+                  {{ p.nombres }} {{p.apellidos}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </div>
+      </mat-grid-tile>
+      <!-- <mat-grid-tile>3</mat-grid-tile> -->
+      <mat-grid-tile>
+          <!-- <button mat-raised-button color="accent" routerLink='/nuevo' type="button"> -->
+            <a mat-raised-button color="accent" (click)="openDialogPaciente()" >Nuevo paciente</a>
+            <!-- <span>Nuevo paciente</span> -->
+
+      </mat-grid-tile>
+      <mat-grid-tile>5</mat-grid-tile>
+      <mat-grid-tile>6</mat-grid-tile>
+      <!-- <mat-grid-tile>7</mat-grid-tile> -->
+      <mat-grid-tile colspan="2" rowspan="1">
+          <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha" formControlName="fecha" >
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>9</mat-grid-tile>
+      <mat-grid-tile>10</mat-grid-tile>
+      <mat-grid-tile>11</mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="1">
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="puso " required formControlName="pulso">
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>13</mat-grid-tile>
+      <mat-grid-tile>14</mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="1">
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="temperatura" required formControlName="temperatura">
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>16</mat-grid-tile>
+      <mat-grid-tile>17</mat-grid-tile>
+      <mat-grid-tile colspan="3" rowspan="1">
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="ritmo Respiratorio " required formControlName="ritmoRespiratorio">
+            </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>19</mat-grid-tile>
+      <!-- <mat-grid-tile>20</mat-grid-tile> -->
+    </mat-grid-list>
+  <!--  -->
+
+
+
+
+
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="estadoBotonRegistrar()">
+    <mat-icon>done</mat-icon>
+    <span>Aceptar</span>
+  </button>
+  <button mat-raised-button color="accent" routerLink='/signo' type="button">
+    <mat-icon>close</mat-icon>
+    <span>Cancelar</span>
+  </button>
+</form>
+<br/>
+
