@@ -1,6 +1,6 @@
 import { HOST } from './../_shared/var.constants';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, } from '@angular/common/http';
 import { Paciente } from '../_model/paciente';
 import { Subject } from 'rxjs';
 
@@ -14,6 +14,8 @@ export class PacienteService {
 
   url: string = HOST;
 
+  
+  
   constructor(private http: HttpClient) { }
 
   listar() {
@@ -38,5 +40,9 @@ export class PacienteService {
 
   eliminar(idPaciente: number) {
     return this.http.delete(`${this.url}/pacientes/${idPaciente}`);
+  }
+// personalizado
+  registrar2(paciente: Paciente) {
+    return this.http.post<any>(`${this.url}/pacientes`, paciente, {observe: 'response'});
   }
 }

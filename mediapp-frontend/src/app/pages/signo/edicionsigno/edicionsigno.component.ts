@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl , FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl , FormBuilder ,Validators } from '@angular/forms';
 import { Signo } from 'src/app/_model/signo';
 import { Paciente } from 'src/app/_model/paciente';
 import { MatSnackBar, MatDialog } from '@angular/material';
@@ -65,10 +65,10 @@ export class EdicionsignoComponent implements OnInit {
     //   usamos el builder para objetos
     this.form = this.builder.group({
       'paciente': this.myControlPaciente,
-      'fecha': new FormControl(new Date()),
-      'pulso': new FormControl(0),
-      'temperatura': new FormControl(0),
-      'ritmoRespiratorio': new FormControl(0)
+      'fecha': new FormControl(new Date(),Validators.required),
+      'pulso': new FormControl(0,Validators.required),
+      'temperatura': new FormControl(0,Validators.required),
+      'ritmoRespiratorio': new FormControl(0,Validators.required)
     });
 
     this.listarPacientes();
@@ -84,9 +84,25 @@ export class EdicionsignoComponent implements OnInit {
       this.initForm();
     });
 
+    // subcripcion
+
+    this.signoService.actualId.subscribe((d)=>{
+      console.log('soy el padre :'+d);
+      if (d > 0) {
+        this.pacienteService.listarPorId(d).subscribe(r => {
+          this.pacienteSeleccionado=r;
+          this.listarPacientes();
+          this.myControlPaciente.setValue(this.pacienteSeleccionado);
+          this.signoService.cambiarCodigo(0);
+        })
+      }
+      
+    });
+
 
   }
 
+  get f(){ return this.form.controls;}
   initForm() {
     if (this.edicion) {
       this.signoService.listarPorId(this.id).subscribe( data => {
@@ -189,5 +205,20 @@ export class EdicionsignoComponent implements OnInit {
       width: '250px',
       data: nuevoPaciente
     });
+  }
+
+  // Recepcion emisor
+  recepcionEmisor(datito: any) {
+    console.log('ya llego el Id:  ... ) ');
+
+    
+    // this.pacienteService.listarPorId(id).subscribe (data => {
+    //   this.listarPacientes();
+    //     this.pacienteSeleccionado = data;
+    //     this.myControlPaciente.setValue(this.pacienteSeleccionado);
+    // console.log('paciente es :'+ this.pacienteSeleccionado)
+    // });
+    
+
   }
 }

@@ -13,3 +13,7 @@
 mat-grid-tile {
   background: rgb(255, 255, 255);
 }
+
+mat-form-field {
+  width: 100%;
+}
