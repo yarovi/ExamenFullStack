@@ -50,27 +50,16 @@ export class EdicionsignoComponent implements OnInit {
 
   ) { }
 // apenas carga el compoenente listamos paciente.
-  ngOnInit() {
-    // instanciamos el formulario para valores simples.
-    // this.form = new FormGroup({
-    //   'id':  new FormControl(0),
-    //   'nombre': new FormControl(''),
-    //   'fecha': new FormControl(new Date()),
-    //   'pulso': new FormControl(0),
-    //   'ritmo': new FormControl(0),
-    //   'ritmoRespiratorio': new FormControl(0)
-    // });
-
+  ngOnInit() {  
     // instanciamos el fomualrio para objetos
     //   usamos el builder para objetos
     this.form = this.builder.group({
       'paciente': this.myControlPaciente,
-      'fecha': new FormControl(new Date(),Validators.required),
-      'pulso': new FormControl(0,Validators.required),
-      'temperatura': new FormControl(0,Validators.required),
-      'ritmoRespiratorio': new FormControl(0,Validators.required)
+      'fecha': new FormControl(new Date()),
+      'pulso': new FormControl(0),
+      'temperatura': new FormControl(0),
+      'ritmoRespiratorio': new FormControl(0)
     });
-
     this.listarPacientes();
     // Todo valueChange devuelve un observable y para poder manipular siempre se ingresa
     // usando un pipe
@@ -83,9 +72,7 @@ export class EdicionsignoComponent implements OnInit {
       this.edicion = this.id != null;
       this.initForm();
     });
-
     // subcripcion
-
     this.signoService.actualId.subscribe((d)=>{
       console.log('soy el padre :'+d);
       if (d > 0) {
@@ -101,8 +88,6 @@ export class EdicionsignoComponent implements OnInit {
 
 
   }
-
-  get f(){ return this.form.controls;}
   initForm() {
     if (this.edicion) {
       this.signoService.listarPorId(this.id).subscribe( data => {
