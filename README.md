@@ -28,7 +28,7 @@
 
 ![img11](https://user-images.githubusercontent.com/5384490/56917681-c16d4500-6a81-11e9-861f-64b9346bb5b4.png)
 
-> Implementacion del reto **Pacienete** el cual permite crear desde el modal y luego ser seleccionado automaticamente desde la lista desplegable,  para ello se decidio emplear una variable reactiva en el ServicioSigno del tipo ** behaevivorSubject** cual se dispare a cual quier cambio , para ello siempre la inicializo en 0 y luego que se dispara el cambio la vuelvo a inicializar en 0. (creo que hay mejores formas  ........)
+> Implementacion del reto **Pacienete** el cual permite crear desde el modal y luego ser seleccionado automaticamente desde la lista desplegable,  para ello se decidio emplear una variable reactiva en el ServicioSigno del tipo **behaevivorSubject** cual se dispare a cual quier cambio , para ello siempre la inicializo en 0 y luego que se dispara el cambio la vuelvo a inicializar en 0. (creo que hay mejores formas  ........)
 
 ![img05](https://user-images.githubusercontent.com/5384490/56917610-8d921f80-6a81-11e9-81cb-a42642fc2c8f.png)
 
@@ -36,5 +36,5 @@
 
 ![img09](https://user-images.githubusercontent.com/5384490/56917619-93880080-6a81-11e9-9364-8a94cb1ceeca.png)
 
-> Tambien se adjunta una copia de la base de datos
+> Tambien se adjunta una copia de la base de datos en el directio **mediapp-backend**
 
