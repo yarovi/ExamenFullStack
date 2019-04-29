@@ -49,7 +49,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
 		configurer.inMemory().withClient(clientId).secret(clientSecret).authorizedGrantTypes(grantType)
-				.scopes(scopeRead, scopeWrite).resourceIds(resourceIds).accessTokenValiditySeconds(20000) //se expresa en segundos
+				.scopes(scopeRead, scopeWrite).resourceIds(resourceIds).accessTokenValiditySeconds(200) //se expresa en segundos 20000
 				.refreshTokenValiditySeconds(0);
 	}	
 

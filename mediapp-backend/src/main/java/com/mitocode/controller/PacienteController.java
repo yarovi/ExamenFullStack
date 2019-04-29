@@ -8,6 +8,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,6 +36,7 @@ import com.mitocode.service.IPacienteService;
 @RequestMapping("/pacientes")
 public class PacienteController {
 
+	private static final Log LOG = LogFactory.getLog(PacienteController.class);
 	@Autowired
 	private IPacienteService service;
 
@@ -70,6 +73,7 @@ public class PacienteController {
 		paciente = service.registrar(pac);
 		// /pacientes/2
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(paciente.getIdPaciente()).toUri();
+		LOG.info("creando  ... "+ ResponseEntity.created(location).build());
 		return ResponseEntity.created(location).build();
 	}
 

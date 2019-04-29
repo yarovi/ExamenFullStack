@@ -70,7 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http		
         .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)	//le proporcionamos sin estado la peticion
+        .sessionCreationPolicy(SessionCreationPolicy.NEVER)	//le proporcionamos sin estado la peticion
         .and()
         .httpBasic()
         .realmName(securityRealm)
